@@ -175,15 +175,17 @@ const SecurityGuardUI = {
     if (!gateCard || !hubCard) return;
 
     if (SecurityGuardAPI.isAuthorized) {
+      document.body.classList.add("theme-premium-active");
       gateCard.style.display = "none";
       hubCard.style.display = "block";
       if (navBadge) {
-        navBadge.innerHTML = `<i class="fa-solid fa-crown" style="color: #fbbf24;"></i> <span style="color:#fbbf24;">Premium: ACTIVE</span>`;
+        navBadge.innerHTML = `<i class="fa-solid fa-crown" style="color: #fbbf24;"></i> <span style="color:#fbbf24;">VIP ACTIVE</span>`;
       }
       if (activeTokenElem) {
         activeTokenElem.innerText = SecurityGuardAPI.sessionToken || "sec_guard_bearer_authorized";
       }
     } else {
+      document.body.classList.remove("theme-premium-active");
       gateCard.style.display = "block";
       hubCard.style.display = "none";
       if (navBadge) {
@@ -210,7 +212,9 @@ const SecurityGuardUI = {
           if (feedback) {
             feedback.innerHTML = `<span style="color: var(--accent-emerald); font-weight:700;"><i class="fa-solid fa-circle-check"></i> ${res.message}</span>`;
           }
-          if (window.showToast) window.showToast("🛡️ Security Guard Authorization Success!");
+          document.body.classList.add("theme-premium-active");
+          this.launchGoldenConfetti();
+          if (window.showToast) window.showToast("👑 VIP ARCHITECT ACCESS UNLOCKED! Ultra-Vibrant Mode Activated!");
           setTimeout(() => {
             this.updateUI();
           }, 500);
@@ -252,9 +256,74 @@ const SecurityGuardUI = {
     SecurityGuardAPI.sessionToken = null;
     localStorage.removeItem("ltsp_premium_unlocked");
     localStorage.removeItem("ltsp_guard_token");
+    document.body.classList.remove("theme-premium-active");
+    const vipBadge = document.getElementById("vip-floating-indicator");
+    if (vipBadge) vipBadge.remove();
     SecurityGuardAPI.log("POST /v1/guard/revoke", "REVOKED", "User session terminated and token revoked.");
     this.updateUI();
-    if (window.showToast) window.showToast("Premium System Locked.");
+    if (window.showToast) window.showToast("Premium System Locked. Standard mode restored.");
+  },
+
+  launchGoldenConfetti() {
+    try {
+      const canvas = document.createElement("canvas");
+      canvas.id = "vip-confetti-canvas";
+      canvas.style.position = "fixed";
+      canvas.style.top = "0";
+      canvas.style.left = "0";
+      canvas.style.width = "100vw";
+      canvas.style.height = "100vh";
+      canvas.style.pointerEvents = "none";
+      canvas.style.zIndex = "9999";
+      document.body.appendChild(canvas);
+
+      const ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const particles = [];
+      const colors = ["#fbbf24", "#f59e0b", "#38bdf8", "#34d399", "#f43f5e", "#ffffff"];
+
+      for (let i = 0; i < 90; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * -canvas.height,
+          size: Math.random() * 8 + 4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          vx: (Math.random() - 0.5) * 4,
+          vy: Math.random() * 4 + 3,
+          rot: Math.random() * 360,
+          rotSpeed: (Math.random() - 0.5) * 10
+        });
+      }
+
+      let frames = 0;
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.rot += p.rotSpeed;
+
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate((p.rot * Math.PI) / 180);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+          ctx.restore();
+        });
+
+        frames++;
+        if (frames < 140) {
+          requestAnimationFrame(animate);
+        } else {
+          canvas.remove();
+        }
+      }
+      requestAnimationFrame(animate);
+    } catch (e) {
+      console.log("Confetti fallback", e);
+    }
   },
 
   exportOSSource(btn) {

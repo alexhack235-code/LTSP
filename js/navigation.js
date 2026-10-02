@@ -166,19 +166,39 @@ const NavigationSystem = {
     if (navPill) navPill.innerHTML = text;
     if (drawerPill) drawerPill.innerHTML = text;
 
-    // Sync premium
+    // Sync premium and apply Ultra-Vibrant theme
     const isUnlocked = localStorage.getItem("ltsp_premium_unlocked") === "true";
     const navPrem = document.getElementById("nav-premium-badge");
     const drawerPrem = document.getElementById("drawer-premium-pill");
 
     if (isUnlocked) {
-      const activeText = `<i class="fa-solid fa-crown" style="color:#fbbf24;"></i> <span style="color:#fbbf24;">Premium: ACTIVE</span>`;
+      document.body.classList.add("theme-premium-active");
+
+      const activeText = `<i class="fa-solid fa-crown" style="color:#fbbf24;"></i> <span style="color:#fbbf24;">VIP ACTIVE</span>`;
       if (navPrem) navPrem.innerHTML = activeText;
       if (drawerPrem) drawerPrem.innerHTML = activeText;
+
+      // Add floating VIP indicator if not on premium page itself
+      if (!document.getElementById("vip-floating-indicator") && !window.location.pathname.includes("premium.html")) {
+        const vipBadge = document.createElement("div");
+        vipBadge.id = "vip-floating-indicator";
+        vipBadge.className = "vip-floating-indicator";
+        vipBadge.innerHTML = `
+          <i class="fa-solid fa-crown" style="color:#fbbf24;"></i>
+          <span>VIP ARCHITECT ACTIVE</span>
+          <span style="opacity:0.35;">•</span>
+          <a href="premium.html" style="color:#fde68a; font-size:0.76rem; text-decoration:underline;">Open Hub</a>
+        `;
+        document.body.appendChild(vipBadge);
+      }
     } else {
+      document.body.classList.remove("theme-premium-active");
       const lockedText = `<i class="fa-solid fa-lock text-muted"></i> <span>Premium: Locked</span>`;
       if (navPrem) navPrem.innerHTML = lockedText;
       if (drawerPrem) drawerPrem.innerHTML = lockedText;
+
+      const vipBadge = document.getElementById("vip-floating-indicator");
+      if (vipBadge) vipBadge.remove();
     }
   }
 };
