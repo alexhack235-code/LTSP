@@ -21,6 +21,112 @@ A complete, beginner-friendly, multi-page interactive web training platform desi
 
 ---
 
+## 📊 Diagrammatic Architecture Layout
+
+### 1. Platform & Navigation Topology
+The training suite uses an uncluttered, multi-page layout connected through a universal animated hamburger drawer:
+
+```mermaid
+flowchart TD
+    User(["Learner / Systems Engineer"]) --> Hub["index.html (Command Center Dashboard)"]
+    Hub --> NavDrawer["Universal Hamburger Drawer (navigation.js)"]
+    
+    subgraph Track1["Track 1: Core Linux Administration & LPIC-1"]
+        Curriculum["curriculum.html (16 Modules)"]
+        Terminal["terminal.html (Bash Shell Sandbox)"]
+        Tools["tools.html (chmod / FHS / Redirection)"]
+        Compendium["compendium.html (120+ Commands)"]
+    end
+    
+    subgraph Track2["Track 2: Advanced Systems Engineering"]
+        Lang["language_builder.html (Compiler Playground)"]
+        OS["os_builder.html (Bare-Metal CRT Boot Monitor)"]
+        Ref["reference.html (x86-64 NASM & C Manuals)"]
+    end
+    
+    subgraph Track3["Track 3: Practice & Architect Tier"]
+        Practice["practice.html (Checklist, Quiz, Labs)"]
+        Premium["premium.html (Security Guard Protected)"]
+    end
+    
+    NavDrawer --> Track1
+    NavDrawer --> Track2
+    NavDrawer --> Track3
+    
+    subgraph Support["Cross-Cutting Systems"]
+        Gemini["Google Gemini 2.5 AI SysAdmin Mentor"]
+        Security["Security Guard API v4.2 (IP Authentication)"]
+        Streak["Day & Streak Habit Engine (localStorage)"]
+    end
+    
+    Track1 -.-> Support
+    Track2 -.-> Support
+    Track3 -.-> Support
+```
+
+---
+
+### 2. Track A: Compiler Engineering Pipeline (High-Level Code to Machine Code)
+How our Toy Language translates human-readable statements into native Linux x86-64 machine instructions:
+
+```mermaid
+flowchart LR
+    Source["Source (.toy)<br/>let a = 12;<br/>return a * 3;"] --> Lexer["Lexical Analyzer<br/>(lexer.c)<br/>Token Stream"]
+    Lexer --> Parser["AST Parser<br/>(parser.c)<br/>Syntax Tree"]
+    Parser --> Symbol["Symbol Table &<br/>Stack Allocation<br/>[rbp - 8]"]
+    Symbol --> CodeGen["x86-64 CodeGen<br/>(codegen.c)<br/>NASM Assembly"]
+    CodeGen --> Assembler["NASM & GNU Linker<br/>(nasm + ld)<br/>ELF64 Binary"]
+    Assembler --> Exec["CPU Execution<br/>exit code in rdi<br/>syscall 60"]
+```
+
+---
+
+### 3. Track B: Bare-Metal 64-Bit OS Boot Architecture
+The step-by-step transition from power-on reset through 16-bit Real Mode into 64-bit Long Mode:
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor CPU as x86-64 Processor
+    participant BIOS as BIOS Firmware
+    participant MBR as Boot Sector (0x7C00)
+    participant Trampoline as Long Mode Setup
+    participant Kernel as Freestanding C Kernel
+    participant Hardware as Screen & Interrupts
+
+    CPU->>BIOS: Power-On Reset (CS:IP = 0xFFFF0)
+    BIOS->>MBR: Load 512-byte Sector (Magic 0xAA55)
+    MBR->>Trampoline: Enable A20 Line & Load GDT (lgdt)
+    Trampoline->>Trampoline: Setup 4-Level Paging (CR3) & Enable Long Mode (CR0)
+    Trampoline->>Kernel: Far Jump to 64-Bit Subroutine (kmain)
+    Kernel->>Hardware: Direct Memory Write to VGA Buffer (0xB8000)
+    Kernel->>Hardware: Load IDT (lidt) & Remap PIC for Keyboard/Timer
+    Kernel->>CPU: Switch to Ring 3 User Space & Interactive Shell
+```
+
+---
+
+### 4. Security Guard API: Dynamic IP-as-Password Authentication Flow
+How the Security Guard engine authenticates users and secures architect-tier bundles:
+
+```mermaid
+flowchart TD
+    Client["User visits premium.html"] --> Query["Query window.SecurityGuardAPI.getClientIP()"]
+    Query --> Resolve["Detect Public/Local IP (e.g. 192.168.1.105)"]
+    Resolve --> Prompt["Prompt User for IP Passcode"]
+    Prompt --> Verify{"Input matches detected IP?"}
+    
+    Verify -- No --> Mismatch["Log 401 UNAUTHORIZED to Console<br/>Display Access Denied Error"]
+    Verify -- Yes --> Match["Issue Bearer Token: guard_jwt_ip_timestamp<br/>Log 200 OK to Live Console"]
+    
+    Match --> Unlock["Unlock Premium High Architect Hub"]
+    Unlock --> Bundle1["Download ToyOS Kernel Project (.txt)"]
+    Unlock --> Bundle2["Download Mini-Compiler Source (.txt)"]
+    Unlock --> Bundle3["Download Architect Cram Vault (.txt)"]
+```
+
+---
+
 ## 🧭 Multi-Page & Tabbed Architecture (Hamburger System)
 
 To ensure an uncluttered, focused learning experience, LTSP is organized into dedicated, lightning-fast standalone pages accessible via a universal **animated hamburger drawer menu**:
