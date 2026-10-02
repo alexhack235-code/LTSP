@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build a Programming Language | Master Track A | LTSP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Top Header with Hamburger -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <button class="btn-hamburger" id="btn-hamburger" aria-label="Open Navigation Menu">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="brand-logo" onclick="location.href='index.html'">
+          <div class="brand-icon"><i class="fa-brands fa-linux"></i></div>
+          <div class="brand-text">
+            <h1>LTSP • Compiler Lab</h1>
+            <div class="brand-tagline">Language Engineering in C & x86-64</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <div class="streak-navbar-badge" id="nav-streak-pill">
+          <i class="fa-solid fa-fire text-warning"></i> <span>1 Day Streak</span>
+        </div>
+        <div class="streak-navbar-badge" id="nav-premium-badge" style="background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.25);">
+          <i class="fa-solid fa-lock text-muted"></i> <span>Premium: Locked</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header & Breadcrumbs -->
+  <section class="page-header-banner">
+    <div class="container">
+      <div class="breadcrumb-trail">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+        <span>/</span>
+        <span style="color: #fff;">Build Your First Programming Language</span>
+      </div>
+      <h2 style="font-size: 2.2rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem;">
+        <i class="fa-solid fa-code" style="color: var(--accent-cyan);"></i> Build Your First Programming Language
+      </h2>
+      <p style="color: var(--text-secondary); max-width: 800px; font-size: 0.95rem;">
+        From raw ASCII source text to a native compiled binary. Learn Lexing (Tokens), Recursive Descent Parsing (AST), Symbol Tables, Stack Frame Allocation, and emitting x86-64 NASM Assembly.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content Container -->
+  <main class="container" style="padding-bottom: 5rem;">
+
+    <!-- Interactive Compiler Playground -->
+    <div class="tool-card" style="margin-bottom: 2.5rem;">
+      <div class="tool-card-title">
+        <i class="fa-solid fa-flask-vial" style="color: var(--accent-cyan);"></i> Live In-Browser Mini Compiler Playground
+      </div>
+      <p class="tool-card-desc">
+        Type high-level code in our toy language below and click <strong>"Compile to x86-64 Assembly"</strong> to witness tokenization, AST generation, and native NASM assembly emission live!
+      </p>
+
+      <div class="compiler-playground-grid">
+        <!-- Editor Left -->
+        <div class="compiler-editor-box">
+          <label style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; color: var(--accent-cyan); display: block; margin-bottom: 0.5rem;">
+            <i class="fa-solid fa-terminal"></i> Source Code (.toy)
+          </label>
+          <textarea id="compiler-input-code" class="code-textarea" spellcheck="false">let a = 12;
+let b = 8;
+return a * 3 + b;</textarea>
+          <button class="btn-primary" id="btn-run-compiler" style="width: 100%; margin-top: 1rem; justify-content: center;">
+            <i class="fa-solid fa-gears"></i> Compile to x86-64 Assembly
+          </button>
+          <div id="compiler-sim-result" style="margin-top: 1rem; padding: 0.85rem; background: rgba(0,0,0,0.3); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+            <span style="color: var(--text-muted); font-size: 0.85rem;">Click Compile to see result.</span>
+          </div>
+        </div>
+
+        <!-- Output Right -->
+        <div class="compiler-outputs-box">
+          <label style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--text-secondary); display: block; margin-bottom: 0.35rem;">
+            1. Token Stream (Lexer)
+          </label>
+          <div id="compiler-tokens-output" class="compiler-mini-panel">Tokens will appear here...</div>
+
+          <label style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--text-secondary); display: block; margin-bottom: 0.35rem;">
+            2. Abstract Syntax Tree (Parser)
+          </label>
+          <div id="compiler-ast-output" class="compiler-mini-panel">AST nodes will appear here...</div>
+
+          <label style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--accent-emerald); display: block; margin-bottom: 0.35rem;">
+            3. Generated x86-64 NASM Assembly
+          </label>
+          <div id="compiler-asm-output" class="compiler-mini-panel" style="color: #34d399; max-height: 180px;">Assembly output will appear here...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5-Phase Compiler Blueprint -->
+    <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 1.5rem; color: #fff;">
+      <i class="fa-solid fa-list-ol" style="color: var(--accent-blue);"></i> The 5-Phase Compiler Engineering Roadmap
+    </h3>
+    <div id="lang-pipeline-container"></div>
+  </main>
+
+  <!-- App Footer -->
+  <footer style="margin-top: 5rem; border-top: 1px solid var(--border-subtle); padding: 3rem 0; background: var(--bg-secondary); text-align: center;">
+    <div class="container">
+      <div style="font-weight: 700; color: #fff; font-size: 1.15rem; margin-bottom: 0.5rem;">
+        LPIC-1 Linux & Operating Systems Master Training Programme (LTSP)
+      </div>
+      <p style="font-size: 0.88rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 1.5rem; line-height: 1.6;">
+        Designed, engineered, and created by <strong>Alexander</strong> (<a href="https://github.com/alexhack235-code" target="_blank" style="color: #38bdf8; text-decoration: underline;">@alexhack235-code</a>). Aligned with Linux Professional Institute (LPI) LPIC-1 Version 5.0 (Exams 101-500 & 102-500) and bare-metal systems architecture.
+      </p>
+      <div style="display: flex; justify-content: center; gap: 1.5rem; font-size: 0.85rem; color: var(--text-muted); flex-wrap: wrap;">
+        <span><i class="fa-brands fa-github text-cyan"></i> <a href="https://github.com/alexhack235-code/LTSP" target="_blank" style="color: inherit; text-decoration: underline;">alexhack235-code/LTSP</a></span>
+        <span><i class="fa-solid fa-shield text-emerald"></i> Security Guard Protected</span>
+        <span><i class="fa-solid fa-robot" style="color: #a855f7;"></i> Gemini 2.5 AI Powered</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/advanced_data.js"></script>
+  <script src="js/advanced_app.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/ai_assistant.js"></script>
+</body>
+</html>

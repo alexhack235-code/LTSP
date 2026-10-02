@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visual Tools & Calculators | LTSP Training</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Top Header with Hamburger -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <button class="btn-hamburger" id="btn-hamburger" aria-label="Open Navigation Menu">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="brand-logo" onclick="location.href='index.html'">
+          <div class="brand-icon"><i class="fa-brands fa-linux"></i></div>
+          <div class="brand-text">
+            <h1>LTSP • Tools</h1>
+            <div class="brand-tagline">Visual Calculators & Explorers</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <div class="streak-navbar-badge" id="nav-streak-pill">
+          <i class="fa-solid fa-fire text-warning"></i> <span>1 Day Streak</span>
+        </div>
+        <div class="streak-navbar-badge" id="nav-premium-badge" style="background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.25);">
+          <i class="fa-solid fa-lock text-muted"></i> <span>Premium: Locked</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header & Breadcrumbs -->
+  <section class="page-header-banner">
+    <div class="container">
+      <div class="breadcrumb-trail">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+        <span>/</span>
+        <span style="color: #fff;">Visual Tools & Calculators</span>
+      </div>
+      <h2 style="font-size: 2.2rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem;">
+        Visual Calculators & OS Architecture Explorers
+      </h2>
+      <p style="color: var(--text-secondary); max-width: 800px; font-size: 0.95rem;">
+        Break down intimidating operating system concepts with dynamic interactive tools: Octal chmod calculator, Filesystem Hierarchy Explorer, I/O Redirection flow, and Signals matrix.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content Container -->
+  <main class="container" style="padding-bottom: 5rem;">
+    <div class="tools-grid">
+      
+      <!-- Tool 1: Octal Permission Calculator -->
+      <div class="tool-card">
+        <div class="tool-card-title">
+          <i class="fa-solid fa-lock" style="color: var(--accent-emerald);"></i> Octal Permission Calculator (chmod)
+        </div>
+        <div class="tool-card-desc">
+          Toggle read, write, and execute permissions to calculate the exact octal code and symbolic representation.
+        </div>
+
+        <div class="octal-matrix-grid">
+          <!-- Owner / User -->
+          <div class="perm-entity-box">
+            <div class="perm-entity-title">User (Owner)</div>
+            <div class="perm-toggle-row">
+              <label><input type="checkbox" class="perm-calc-check" id="calc-u-r" checked> Read (4)</label>
+            </div>
+            <div class="perm-toggle-row">
+              <label><input type="checkbox" class="perm-calc-check" id="calc-u-w" checked> Write (2)</label>
+            </div>
+            <div class="perm-toggle-row">
+              <label><input type="checkbox" class="perm-calc-check" id="calc-u-x" checked> Exec (1)</label>
+            </div>
+          </div>
+
+          <!-- Group -->
+          <div class="perm-entity-box">
+            <div class="perm-entity-title">Group</div>
+            <div class="perm-toggle-row">
+              <label><input type="checkbox" class="perm-calc-check" id="calc-g-r" checked> Read (4)</label>
+            </div>
+            <div class="perm-toggle-row">
+              <label><input type="checkbox" class="perm-calc-check" id="calc-g-w"> Write (2)</label>
+            </div>
+            <div class="perm-toggle-row">
+              <label><input type="checkbox" class="perm-calc-check" id="calc-g-x" checked> Exec (1)</label>
+            </div>
+          </div>
+
+          <!-- Others -->
+          <div class="perm-entity-box">
+            <div class="perm-entity-title">Others (World)</div>
+            <div class="perm-toggle-row">
+              <label><input type="checkbox" class="perm-calc-check" id="calc-o-r" checked> Read (4)</label>
+            </div>
+            <div class="perm-toggle-row">
+              <label><input type="checkbox" class="perm-calc-check" id="calc-o-w"> Write (2)</label>
+            </div>
+            <div class="perm-toggle-row">
+              <label><input type="checkbox" class="perm-calc-check" id="calc-o-x" checked> Exec (1)</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="calc-results-display">
+          <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Numeric Octal Value</div>
+          <div class="calc-big-number" id="calc-octal-result">755</div>
+          <div><span class="calc-symbolic-badge" id="calc-symbolic-result">-rwxr-xr-x</span></div>
+          <div class="calc-cmd-preview" id="calc-cmd-preview">chmod 755 filename</div>
+          <div class="calc-explanation-text" id="calc-explanation">Owner has Read, Write & Execute; Group has Read & Execute; Others have Read & Execute.</div>
+        </div>
+      </div>
+
+      <!-- Tool 2: Filesystem Hierarchy Standard (FHS) Explorer -->
+      <div class="tool-card">
+        <div class="tool-card-title">
+          <i class="fa-solid fa-folder-tree" style="color: var(--accent-cyan);"></i> Linux Filesystem Hierarchy (FHS)
+        </div>
+        <div class="tool-card-desc">
+          Click on any directory in the tree to discover what belongs there and why it is placed where it is.
+        </div>
+
+        <div class="fhs-nodes-flex">
+          <button class="fhs-node-btn active" data-fhs="/">/</button>
+          <button class="fhs-node-btn" data-fhs="/etc">/etc</button>
+          <button class="fhs-node-btn" data-fhs="/home">/home</button>
+          <button class="fhs-node-btn" data-fhs="/var">/var</button>
+          <button class="fhs-node-btn" data-fhs="/bin">/bin</button>
+          <button class="fhs-node-btn" data-fhs="/sbin">/sbin</button>
+          <button class="fhs-node-btn" data-fhs="/dev">/dev</button>
+          <button class="fhs-node-btn" data-fhs="/proc">/proc</button>
+          <button class="fhs-node-btn" data-fhs="/sys">/sys</button>
+          <button class="fhs-node-btn" data-fhs="/boot">/boot</button>
+          <button class="fhs-node-btn" data-fhs="/tmp">/tmp</button>
+          <button class="fhs-node-btn" data-fhs="/opt">/opt</button>
+          <button class="fhs-node-btn" data-fhs="/mnt">/mnt</button>
+        </div>
+
+        <div class="fhs-detail-card">
+          <div class="fhs-detail-title" id="fhs-path-title">/</div>
+          <p class="fhs-detail-desc" id="fhs-description">
+            The Root directory. The absolute top of the entire filesystem tree. Everything originates here.
+          </p>
+        </div>
+      </div>
+
+      <!-- Tool 3: I/O Redirection & Stream Flow -->
+      <div class="tool-card">
+        <div class="tool-card-title">
+          <i class="fa-solid fa-arrows-split-up-and-left" style="color: var(--accent-amber);"></i> I/O Redirection Visualizer
+        </div>
+        <div class="tool-card-desc">
+          Understand how standard streams (0, 1, 2) flow between processes and files.
+        </div>
+
+        <div class="redir-tabs">
+          <button class="redir-tab-btn active" data-redir="stdout-overwrite">&gt; Overwrite</button>
+          <button class="redir-tab-btn" data-redir="stdout-append">&gt;&gt; Append</button>
+          <button class="redir-tab-btn" data-redir="stderr-redirect">2&gt; Stderr</button>
+          <button class="redir-tab-btn" data-redir="merged-output">&gt; file 2&gt;&amp;1</button>
+          <button class="redir-tab-btn" data-redir="pipeline">| Pipeline</button>
+          <button class="redir-tab-btn" data-redir="logical-and">&amp;&amp; AND</button>
+        </div>
+
+        <div class="redir-visual-box">
+          <div class="redir-title" id="redir-title">Overwrite Standard Output (FD 1)</div>
+          <div class="redir-syntax-badge" id="redir-syntax">command &gt; file.txt</div>
+          <div class="redir-stream-diagram" id="redir-stream-diagram">Output (1) ───[ &gt; ]───&gt; file.txt (Wipes existing)</div>
+          <p style="font-size: 0.88rem; color: #cbd5e1;" id="redir-desc">
+            Captures stdout and writes it to file.txt. If file.txt exists, its prior contents are erased completely!
+          </p>
+        </div>
+      </div>
+
+      <!-- Tool 4: Process Signals Matrix -->
+      <div class="tool-card">
+        <div class="tool-card-title">
+          <i class="fa-solid fa-satellite-dish" style="color: var(--accent-rose);"></i> Process Signals Reference
+        </div>
+        <div class="tool-card-desc">
+          The core signals required for LPIC-1 process management and Linux system operations.
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="commands-table" style="font-size: 0.85rem;">
+            <thead>
+              <tr>
+                <th>Signal</th>
+                <th>Number</th>
+                <th>Action & Purpose</th>
+                <th>Catchable?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code class="cmd-name">SIGHUP</code></td>
+                <td>1</td>
+                <td>Hangup / Reload daemon configuration</td>
+                <td><span class="text-emerald">Yes</span></td>
+              </tr>
+              <tr>
+                <td><code class="cmd-name">SIGINT</code></td>
+                <td>2</td>
+                <td>Keyboard interrupt (Ctrl + C)</td>
+                <td><span class="text-emerald">Yes</span></td>
+              </tr>
+              <tr>
+                <td><code class="cmd-name">SIGKILL</code></td>
+                <td>9</td>
+                <td>Instant forced termination by Kernel</td>
+                <td><span class="text-danger">NO (Uncatchable)</span></td>
+              </tr>
+              <tr>
+                <td><code class="cmd-name">SIGTERM</code></td>
+                <td>15</td>
+                <td>Graceful polite termination request (Default)</td>
+                <td><span class="text-emerald">Yes</span></td>
+              </tr>
+              <tr>
+                <td><code class="cmd-name">SIGSTOP</code></td>
+                <td>19</td>
+                <td>Freeze/pause process execution</td>
+                <td><span class="text-danger">NO</span></td>
+              </tr>
+              <tr>
+                <td><code class="cmd-name">SIGCONT</code></td>
+                <td>18</td>
+                <td>Resume previously stopped process</td>
+                <td><span class="text-emerald">Yes</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- App Footer -->
+  <footer style="margin-top: 5rem; border-top: 1px solid var(--border-subtle); padding: 3rem 0; background: var(--bg-secondary); text-align: center;">
+    <div class="container">
+      <div style="font-weight: 700; color: #fff; font-size: 1.15rem; margin-bottom: 0.5rem;">
+        LPIC-1 Linux & Operating Systems Master Training Programme (LTSP)
+      </div>
+      <p style="font-size: 0.88rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 1.5rem; line-height: 1.6;">
+        Designed, engineered, and created by <strong>Alexander</strong> (<a href="https://github.com/alexhack235-code" target="_blank" style="color: #38bdf8; text-decoration: underline;">@alexhack235-code</a>). Aligned with Linux Professional Institute (LPI) LPIC-1 Version 5.0 (Exams 101-500 & 102-500) and bare-metal systems architecture.
+      </p>
+      <div style="display: flex; justify-content: center; gap: 1.5rem; font-size: 0.85rem; color: var(--text-muted); flex-wrap: wrap;">
+        <span><i class="fa-brands fa-github text-cyan"></i> <a href="https://github.com/alexhack235-code/LTSP" target="_blank" style="color: inherit; text-decoration: underline;">alexhack235-code/LTSP</a></span>
+        <span><i class="fa-solid fa-shield text-emerald"></i> Security Guard Protected</span>
+        <span><i class="fa-solid fa-robot" style="color: #a855f7;"></i> Gemini 2.5 AI Powered</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/ai_assistant.js"></script>
+</body>
+</html>

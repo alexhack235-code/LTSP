@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practice & Labs | Linux & OS Master Training</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Top Header with Hamburger -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <button class="btn-hamburger" id="btn-hamburger" aria-label="Open Navigation Menu">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="brand-logo" onclick="location.href='index.html'">
+          <div class="brand-icon"><i class="fa-brands fa-linux"></i></div>
+          <div class="brand-text">
+            <h1>LTSP • Practice</h1>
+            <div class="brand-tagline">Checklist, Quiz & SysAdmin Labs</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <div class="streak-navbar-badge" id="nav-streak-pill">
+          <i class="fa-solid fa-fire text-warning"></i> <span>1 Day Streak</span>
+        </div>
+        <div class="streak-navbar-badge" id="nav-premium-badge" style="background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.25);">
+          <i class="fa-solid fa-lock text-muted"></i> <span>Premium: Locked</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header & Breadcrumbs -->
+  <section class="page-header-banner">
+    <div class="container">
+      <div class="breadcrumb-trail">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+        <span>/</span>
+        <span style="color: #fff;">Practice, Checklist & Labs</span>
+      </div>
+      <h2 style="font-size: 2.2rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem;">
+        Hands-On Practice & Exam Readiness
+      </h2>
+      <p style="color: var(--text-secondary); max-width: 800px; font-size: 0.95rem;">
+        Test and validate your command-line mastery through the official 17-point LPIC-1 practice checklist, interactive knowledge check quiz, and emergency sysadmin troubleshooting missions.
+      </p>
+
+      <!-- Sub-Tabs Switcher -->
+      <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem; flex-wrap: wrap;">
+        <button class="nav-tab-btn active" id="btn-tab-checklist" onclick="switchPracticeTab('checklist')">
+          <i class="fa-solid fa-list-check text-emerald"></i> 17-Point Exam Checklist
+        </button>
+        <button class="nav-tab-btn" id="btn-tab-quiz" onclick="switchPracticeTab('quiz')">
+          <i class="fa-solid fa-circle-question text-warning"></i> Knowledge Check Quiz
+        </button>
+        <button class="nav-tab-btn" id="btn-tab-labs" onclick="switchPracticeTab('labs')">
+          <i class="fa-solid fa-screwdriver-wrench text-cyan"></i> SysAdmin Trouble Missions (6 Labs)
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Container -->
+  <main class="container" style="padding-bottom: 5rem;">
+
+    <!-- TAB PANE 1: CHECKLIST -->
+    <div id="pane-checklist" style="display: block;">
+      <div class="section-header-row">
+        <div>
+          <h2 class="section-title">LPIC-1 Final Practice Checklist</h2>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">
+            From Page 9 of the Official LPIC-1 Compendium. You must be able to perform all of these from memory without notes! Progress is saved automatically in your browser.
+          </p>
+        </div>
+        <div style="display: flex; gap: 0.5rem;">
+          <button class="btn-secondary" onclick="resetChecklist()" style="padding: 0.5rem 1rem; font-size: 0.85rem;">
+            <i class="fa-solid fa-arrow-rotate-left"></i> Reset
+          </button>
+          <button class="btn-secondary" onclick="masterAllChecklist()" style="padding: 0.5rem 1rem; font-size: 0.85rem;">
+            <i class="fa-solid fa-check-double"></i> Mark All
+          </button>
+        </div>
+      </div>
+
+      <!-- Checklist Progress Summary -->
+      <div class="checklist-progress-card">
+        <div class="checklist-header-top">
+          <span style="font-weight: 700; color: #fff; font-size: 1.1rem;" id="checklist-stats">0 of 18 Mastered</span>
+          <span style="font-family: var(--font-mono); color: var(--accent-emerald); font-weight: 700;" id="checklist-pct">0%</span>
+        </div>
+        <div class="progress-track-bg">
+          <div class="progress-track-fill" id="checklist-progress-bar"></div>
+        </div>
+      </div>
+
+      <!-- Checklist Items Grid -->
+      <div class="checklist-grid" id="checklist-container"></div>
+    </div>
+
+    <!-- TAB PANE 2: QUIZ -->
+    <div id="pane-quiz" style="display: none;">
+      <div class="section-header-row">
+        <div>
+          <h2 class="section-title">LPIC-1 Knowledge Check & Self-Test</h2>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">
+            Test your understanding with instant feedback, scoring, and deep explanations on core Linux and OS principles.
+          </p>
+        </div>
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <span class="badge-tag" id="quiz-score-badge" style="font-size: 0.9rem; padding: 0.4rem 0.8rem;">Score: 0 / 0</span>
+          <button class="btn-secondary" onclick="restartQuiz()" style="padding: 0.5rem 1rem; font-size: 0.85rem;">
+            <i class="fa-solid fa-rotate"></i> Retake Quiz
+          </button>
+        </div>
+      </div>
+
+      <div class="quiz-wrapper" id="quiz-container"></div>
+    </div>
+
+    <!-- TAB PANE 3: LABS & SCENARIOS -->
+    <div id="pane-labs" style="display: none;">
+      <div class="section-header-row">
+        <div>
+          <h2 class="section-title">Hands-On SysAdmin Missions & Scenarios</h2>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">
+            Real-world troubleshooting scenarios. Test your skills on real situations you'll encounter on Linux production servers and the LPIC-1 exam.
+          </p>
+        </div>
+      </div>
+
+      <div class="scenarios-grid" id="scenarios-container"></div>
+    </div>
+
+  </main>
+
+  <!-- App Footer -->
+  <footer style="margin-top: 5rem; border-top: 1px solid var(--border-subtle); padding: 3rem 0; background: var(--bg-secondary); text-align: center;">
+    <div class="container">
+      <div style="font-weight: 700; color: #fff; font-size: 1.15rem; margin-bottom: 0.5rem;">
+        LPIC-1 Linux & Operating Systems Master Training Programme (LTSP)
+      </div>
+      <p style="font-size: 0.88rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 1.5rem; line-height: 1.6;">
+        Designed, engineered, and created by <strong>Alexander</strong> (<a href="https://github.com/alexhack235-code" target="_blank" style="color: #38bdf8; text-decoration: underline;">@alexhack235-code</a>). Aligned with Linux Professional Institute (LPI) LPIC-1 Version 5.0 (Exams 101-500 & 102-500) and bare-metal systems architecture.
+      </p>
+      <div style="display: flex; justify-content: center; gap: 1.5rem; font-size: 0.85rem; color: var(--text-muted); flex-wrap: wrap;">
+        <span><i class="fa-brands fa-github text-cyan"></i> <a href="https://github.com/alexhack235-code/LTSP" target="_blank" style="color: inherit; text-decoration: underline;">alexhack235-code/LTSP</a></span>
+        <span><i class="fa-solid fa-shield text-emerald"></i> Security Guard Protected</span>
+        <span><i class="fa-solid fa-robot" style="color: #a855f7;"></i> Gemini 2.5 AI Powered</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/ai_assistant.js"></script>
+
+  <script>
+    function switchPracticeTab(tab) {
+      const paneChecklist = document.getElementById("pane-checklist");
+      const paneQuiz = document.getElementById("pane-quiz");
+      const paneLabs = document.getElementById("pane-labs");
+
+      const btnChecklist = document.getElementById("btn-tab-checklist");
+      const btnQuiz = document.getElementById("btn-tab-quiz");
+      const btnLabs = document.getElementById("btn-tab-labs");
+
+      // Hide all panes
+      paneChecklist.style.display = "none";
+      paneQuiz.style.display = "none";
+      paneLabs.style.display = "none";
+
+      // Remove active classes
+      btnChecklist.classList.remove("active");
+      btnQuiz.classList.remove("active");
+      btnLabs.classList.remove("active");
+
+      if (tab === "checklist") {
+        paneChecklist.style.display = "block";
+        btnChecklist.classList.add("active");
+      } else if (tab === "quiz") {
+        paneQuiz.style.display = "block";
+        btnQuiz.classList.add("active");
+      } else if (tab === "labs") {
+        paneLabs.style.display = "block";
+        btnLabs.classList.add("active");
+      }
+    }
+  </script>
+</body>
+</html>

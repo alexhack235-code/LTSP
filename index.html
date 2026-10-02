@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LTSP • Linux & Operating Systems Master Training Programme</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Top Header with Hamburger -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <button class="btn-hamburger" id="btn-hamburger" aria-label="Open Navigation Menu">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="brand-logo" onclick="location.href='index.html'">
+          <div class="brand-icon"><i class="fa-brands fa-linux"></i></div>
+          <div class="brand-text">
+            <h1>LTSP Mastery</h1>
+            <div class="brand-tagline">Operating Systems & Linux</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Nav Links on Desktop -->
+      <nav class="header-quick-nav">
+        <a href="curriculum.html" class="quick-nav-link"><i class="fa-solid fa-graduation-cap"></i> Curriculum</a>
+        <a href="terminal.html" class="quick-nav-link"><i class="fa-solid fa-terminal"></i> Terminal</a>
+        <a href="tools.html" class="quick-nav-link"><i class="fa-solid fa-calculator"></i> Tools</a>
+        <a href="language_builder.html" class="quick-nav-link"><i class="fa-solid fa-code"></i> Compiler</a>
+        <a href="os_builder.html" class="quick-nav-link"><i class="fa-solid fa-microchip"></i> OS Builder</a>
+        <a href="reference.html" class="quick-nav-link"><i class="fa-solid fa-bolt"></i> Assembly & C</a>
+        <a href="practice.html" class="quick-nav-link"><i class="fa-solid fa-list-check"></i> Practice</a>
+        <a href="compendium.html" class="quick-nav-link"><i class="fa-solid fa-book"></i> Compendium</a>
+        <a href="premium.html" class="quick-nav-link" style="color: #fbbf24;"><i class="fa-solid fa-crown"></i> Premium</a>
+      </nav>
+
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <div class="streak-navbar-badge" id="nav-streak-pill">
+          <i class="fa-solid fa-fire text-warning"></i> <span>1 Day Streak</span>
+        </div>
+        <div class="streak-navbar-badge" id="nav-premium-badge" style="background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.25);">
+          <i class="fa-solid fa-lock text-muted"></i> <span>Premium: Locked</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Welcome Banner -->
+  <section class="hero-banner">
+    <div class="container">
+      
+      <div style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.25rem;">
+        <div class="hero-pill">
+          <i class="fa-solid fa-shield-halved"></i> Beginner Friendly • From Zero to Systems Architect
+        </div>
+        <div class="hero-pill" style="background: rgba(14, 165, 233, 0.15); border-color: rgba(14, 165, 233, 0.35); color: #38bdf8;">
+          <i class="fa-brands fa-github"></i> Created & Engineered by <strong>Alexander</strong> (<a href="https://github.com/alexhack235-code/LTSP" target="_blank" style="color: #fff; text-decoration: underline;">@alexhack235-code</a>)
+        </div>
+      </div>
+
+      <h2 class="hero-title">Linux & Operating Systems Master Training Programme</h2>
+      
+      <!-- Primary Learning Pledge -->
+      <div class="hero-pledge-card">
+        <div class="hero-pledge-badge">
+          <i class="fa-solid fa-award"></i> The Learning Pledge
+        </div>
+        <p class="hero-pledge-text">
+          "By the end of this training programme, you will have the required foundational knowledge on modern operating systems, command-line operations, Linux system administration, storage architectures, networking, process lifecycles, and security — fully preparing you for LPIC-1 certification and real-world engineering roles."
+        </p>
+      </div>
+
+      <!-- Interactive Day & Streak Counter Widget -->
+      <div class="streak-card-wrapper">
+        <div class="streak-card-left">
+          <div class="flame-icon-big">
+            <i class="fa-solid fa-fire"></i>
+          </div>
+          <div>
+            <div class="streak-challenge-text" id="challenge-day-big">Day 1 of 45-Day Systems Journey</div>
+            <div class="streak-count-text" id="streak-count-big">1 Day Streak</div>
+            <div class="streak-week-dots" id="streak-week-dots"></div>
+          </div>
+        </div>
+        <div style="text-align: right;">
+          <button class="btn-checkin" id="btn-daily-checkin">
+            <i class="fa-solid fa-fire"></i> Check In for Today (+1 Day)
+          </button>
+          <div style="font-size: 0.78rem; color: #94a3b8; margin-top: 0.4rem;" id="streak-status-msg">
+            Check in now to build your daily habit and advance your engineering journey!
+          </div>
+        </div>
+      </div>
+
+      <!-- Fast Action CTA Buttons -->
+      <div class="hero-actions-row">
+        <a href="curriculum.html" class="btn-primary">
+          <i class="fa-solid fa-play"></i> Start Curriculum (16 Modules)
+        </a>
+        <a href="terminal.html" class="btn-secondary">
+          <i class="fa-solid fa-terminal"></i> Open Terminal Sandbox
+        </a>
+        <a href="https://github.com/alexhack235-code/LTSP" target="_blank" class="btn-secondary" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.2);">
+          <i class="fa-brands fa-github"></i> Star on GitHub
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Main Launchpad & Hub Navigation Section -->
+  <main class="container" style="padding-bottom: 5rem;">
+    
+    <div class="section-header-row" style="margin-bottom: 2rem;">
+      <div>
+        <h3 class="section-title" style="font-size: 1.5rem;">
+          <i class="fa-solid fa-compass" style="color: var(--accent-cyan);"></i> Learning Tracks & System Modules
+        </h3>
+        <p style="color: var(--text-secondary); font-size: 0.95rem;">
+          Select any dedicated learning portal below to start training. Cleanly organized into separate workspaces with no clutter.
+        </p>
+      </div>
+    </div>
+
+    <!-- Category 1: Core Linux Administration & LPIC-1 -->
+    <div style="margin-bottom: 2.5rem;">
+      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+        <span class="badge-tag" style="background: rgba(14, 165, 233, 0.15); color: #38bdf8; border-color: rgba(14, 165, 233, 0.3);">Track 1</span>
+        <h4 style="font-size: 1.15rem; color: #fff; font-weight: 700;">Core Linux Administration & LPIC-1 Certification</h4>
+      </div>
+
+      <div class="tools-grid">
+        <!-- Card 1: 16 Modules Curriculum -->
+        <div class="tool-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="tool-card-title">
+              <i class="fa-solid fa-graduation-cap" style="color: var(--accent-cyan);"></i> 16 Structured Modules
+            </div>
+            <p class="tool-card-desc">
+              Comprehensive curriculum from OS kernel fundamentals to systemd units, package managers (dpkg, RPM), LVM storage, and network diagnostics.
+            </p>
+          </div>
+          <a href="curriculum.html" class="btn-secondary" style="width: 100%; justify-content: center; margin-top: 1rem;">
+            Explore Curriculum <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Card 2: Interactive Terminal -->
+        <div class="tool-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="tool-card-title">
+              <i class="fa-solid fa-terminal" style="color: var(--accent-emerald);"></i> Interactive Terminal Sandbox
+            </div>
+            <p class="tool-card-desc">
+              Full in-browser bash terminal simulator with virtual filesystem, pipes, permissions, process inspection, and quick-launcher command palette.
+            </p>
+          </div>
+          <a href="terminal.html" class="btn-secondary" style="width: 100%; justify-content: center; margin-top: 1rem;">
+            Launch Terminal <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Card 3: Visual Tools -->
+        <div class="tool-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="tool-card-title">
+              <i class="fa-solid fa-calculator" style="color: var(--accent-amber);"></i> Visual Tools & Calculators
+            </div>
+            <p class="tool-card-desc">
+              Interactive Octal Permission calculator (chmod), FHS directory tree explorer, I/O stream redirection visualizer, and process signals reference matrix.
+            </p>
+          </div>
+          <a href="tools.html" class="btn-secondary" style="width: 100%; justify-content: center; margin-top: 1rem;">
+            Open Calculators <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category 2: Advanced Engineering Tracks -->
+    <div style="margin-bottom: 2.5rem;">
+      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+        <span class="badge-tag" style="background: rgba(168, 85, 247, 0.15); color: #c084fc; border-color: rgba(168, 85, 247, 0.3);">Track 2</span>
+        <h4 style="font-size: 1.15rem; color: #fff; font-weight: 700;">Advanced Engineering & Systems Craftsmanship</h4>
+      </div>
+
+      <div class="tools-grid">
+        <!-- Card 4: Build a Language -->
+        <div class="tool-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="tool-card-title">
+              <i class="fa-solid fa-code" style="color: var(--accent-cyan);"></i> Build Your First Language
+            </div>
+            <p class="tool-card-desc">
+              5-phase compiler roadmap with interactive in-browser playground. Converts source code into Tokens, Abstract Syntax Trees (AST), and native x86-64 NASM assembly.
+            </p>
+          </div>
+          <a href="language_builder.html" class="btn-secondary" style="width: 100%; justify-content: center; margin-top: 1rem;">
+            Open Compiler Track <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Card 5: Build an OS -->
+        <div class="tool-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="tool-card-title">
+              <i class="fa-solid fa-microchip" style="color: var(--accent-emerald);"></i> Build Your First OS
+            </div>
+            <p class="tool-card-desc">
+              6-stage bare-metal OS roadmap with a real-time virtual VGA CRT monitor. Boot from 16-bit Real Mode to 64-bit Long Mode with memory address 0xB8000.
+            </p>
+          </div>
+          <a href="os_builder.html" class="btn-secondary" style="width: 100%; justify-content: center; margin-top: 1rem;">
+            Open OS Builder <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Card 6: Assembly & C Manuals -->
+        <div class="tool-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="tool-card-title">
+              <i class="fa-solid fa-bolt" style="color: #fbbf24;"></i> Assembly & C Manuals
+            </div>
+            <p class="tool-card-desc">
+              23-section x86-64 NASM Assembly guide (System V ABI calling convention, stack frames) & 25-section Standard C guide (pointers, memory layout, structs).
+            </p>
+          </div>
+          <a href="reference.html" class="btn-secondary" style="width: 100%; justify-content: center; margin-top: 1rem;">
+            Read Manuals <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category 3: Practice, Reference & Premium -->
+    <div style="margin-bottom: 2.5rem;">
+      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+        <span class="badge-tag" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; border-color: rgba(245, 158, 11, 0.3);">Track 3</span>
+        <h4 style="font-size: 1.15rem; color: #fff; font-weight: 700;">Practice, Command Reference & Premium Architect Tier</h4>
+      </div>
+
+      <div class="tools-grid">
+        <!-- Card 7: Practice & Labs -->
+        <div class="tool-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="tool-card-title">
+              <i class="fa-solid fa-list-check" style="color: var(--accent-emerald);"></i> Practice, Quiz & Labs
+            </div>
+            <p class="tool-card-desc">
+              Official 17-point LPIC-1 practice checklist with browser persistence, 12-question interactive quiz with explanations, and 6 emergency sysadmin troubleshooting labs.
+            </p>
+          </div>
+          <a href="practice.html" class="btn-secondary" style="width: 100%; justify-content: center; margin-top: 1rem;">
+            Start Practicing <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Card 8: Command Compendium -->
+        <div class="tool-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="tool-card-title">
+              <i class="fa-solid fa-book" style="color: var(--accent-cyan);"></i> Command Compendium
+            </div>
+            <p class="tool-card-desc">
+              Searchable reference table containing all 120+ commands from the LPIC-1 compendium with real-time text filter and 1-click clipboard copy buttons.
+            </p>
+          </div>
+          <a href="compendium.html" class="btn-secondary" style="width: 100%; justify-content: center; margin-top: 1rem;">
+            Search Commands <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Card 9: Premium High System -->
+        <div class="tool-card" style="display: flex; flex-direction: column; justify-content: space-between; border-color: rgba(245, 158, 11, 0.3); background: rgba(245, 158, 11, 0.04);">
+          <div>
+            <div class="tool-card-title" style="color: #fbbf24;">
+              <i class="fa-solid fa-crown" style="color: #fbbf24;"></i> Premium High System
+            </div>
+            <p class="tool-card-desc">
+              Security Guard API protected gate using your client IP address as the dynamic security passcode. Grants exportable OS kernel and compiler source bundles.
+            </p>
+          </div>
+          <a href="premium.html" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 1rem; background: linear-gradient(135deg, #f59e0b, #d97706);">
+            Access Premium Tier <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Mentor Spotlight Card -->
+    <div style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.08)); border: 1px solid rgba(168, 85, 247, 0.25); border-radius: var(--radius-lg); padding: 1.75rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; margin-top: 3rem;">
+      <div style="display: flex; align-items: center; gap: 1.25rem;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, #6366f1, #a855f7); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.5rem; flex-shrink: 0;">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+        </div>
+        <div>
+          <h4 style="color: #fff; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.25rem;">
+            Stuck or Have Questions? Ask the AI SysAdmin Mentor!
+          </h4>
+          <p style="color: #cbd5e1; font-size: 0.9rem; max-width: 650px; line-height: 1.5;">
+            Integrated with Google Gemini 2.5 Flash. Built into every single page to clarify assembly instructions, explain tricky kernel concepts, or help you troubleshoot any command.
+          </p>
+        </div>
+      </div>
+      <button class="btn-primary" onclick="document.getElementById('btn-toggle-gemini')?.click()" style="background: linear-gradient(135deg, #6366f1, #a855f7);">
+        <i class="fa-solid fa-comments"></i> Chat with AI Mentor
+      </button>
+    </div>
+
+  </main>
+
+  <!-- App Footer with Alexander Attribution -->
+  <footer style="margin-top: 5rem; border-top: 1px solid var(--border-subtle); padding: 3rem 0; background: var(--bg-secondary); text-align: center;">
+    <div class="container">
+      <div style="font-weight: 700; color: #fff; font-size: 1.15rem; margin-bottom: 0.5rem;">
+        LPIC-1 Linux & Operating Systems Master Training Programme (LTSP)
+      </div>
+      <p style="font-size: 0.88rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 1.5rem; line-height: 1.6;">
+        Designed, engineered, and created by <strong>Alexander</strong> (<a href="https://github.com/alexhack235-code" target="_blank" style="color: #38bdf8; text-decoration: underline;">@alexhack235-code</a>). Aligned with Linux Professional Institute (LPI) LPIC-1 Version 5.0 (Exams 101-500 & 102-500) and bare-metal systems architecture.
+      </p>
+      <div style="display: flex; justify-content: center; gap: 1.5rem; font-size: 0.85rem; color: var(--text-muted); flex-wrap: wrap;">
+        <span><i class="fa-brands fa-github text-cyan"></i> <a href="https://github.com/alexhack235-code/LTSP" target="_blank" style="color: inherit; text-decoration: underline;">alexhack235-code/LTSP</a></span>
+        <span><i class="fa-solid fa-shield text-emerald"></i> Security Guard Protected</span>
+        <span><i class="fa-solid fa-fire text-warning"></i> 45-Day Streak System</span>
+        <span><i class="fa-solid fa-robot" style="color: #a855f7;"></i> Gemini 2.5 AI Powered</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- JavaScript Modules -->
+  <script src="js/advanced_data.js"></script>
+  <script src="js/advanced_app.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/ai_assistant.js"></script>
+</body>
+</html>

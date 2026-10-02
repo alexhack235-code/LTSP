@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assembly & C Reference Manuals | LTSP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Top Header with Hamburger -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <button class="btn-hamburger" id="btn-hamburger" aria-label="Open Navigation Menu">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="brand-logo" onclick="location.href='index.html'">
+          <div class="brand-icon"><i class="fa-brands fa-linux"></i></div>
+          <div class="brand-text">
+            <h1>LTSP • Reference</h1>
+            <div class="brand-tagline">Assembly & C Complete Guides</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <div class="streak-navbar-badge" id="nav-streak-pill">
+          <i class="fa-solid fa-fire text-warning"></i> <span>1 Day Streak</span>
+        </div>
+        <div class="streak-navbar-badge" id="nav-premium-badge" style="background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.25);">
+          <i class="fa-solid fa-lock text-muted"></i> <span>Premium: Locked</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header & Breadcrumbs -->
+  <section class="page-header-banner">
+    <div class="container">
+      <div class="breadcrumb-trail">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+        <span>/</span>
+        <span style="color: #fff;">Assembly & C Reference Manuals</span>
+      </div>
+      <h2 style="font-size: 2.2rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem;">
+        Core Systems Reference Manuals
+      </h2>
+      <p style="color: var(--text-secondary); max-width: 800px; font-size: 0.95rem;">
+        Comprehensive architectural reference guides covering x86-64 NASM Assembly (Linux System V ABI) and Standard C Programming (C99/C11/C17).
+      </p>
+
+      <!-- Sub-Tabs Switcher -->
+      <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem;">
+        <button class="nav-tab-btn active" id="btn-tab-asm" onclick="switchRefTab('asm')">
+          <i class="fa-solid fa-bolt text-warning"></i> x86-64 Assembly Guide (23 Sections)
+        </button>
+        <button class="nav-tab-btn" id="btn-tab-c" onclick="switchRefTab('c')">
+          <i class="fa-solid fa-c" style="color: var(--accent-blue);"></i> C Programming Guide (25 Sections)
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Container -->
+  <main class="container" style="padding-bottom: 5rem;">
+    <!-- Sub-pane 1: Assembly Guide -->
+    <div id="pane-asm" style="display: block;">
+      <div id="asm-guide-accordion"></div>
+    </div>
+
+    <!-- Sub-pane 2: C Guide -->
+    <div id="pane-c" style="display: none;">
+      <div id="c-guide-accordion"></div>
+    </div>
+  </main>
+
+  <!-- App Footer -->
+  <footer style="margin-top: 5rem; border-top: 1px solid var(--border-subtle); padding: 3rem 0; background: var(--bg-secondary); text-align: center;">
+    <div class="container">
+      <div style="font-weight: 700; color: #fff; font-size: 1.15rem; margin-bottom: 0.5rem;">
+        LPIC-1 Linux & Operating Systems Master Training Programme (LTSP)
+      </div>
+      <p style="font-size: 0.88rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 1.5rem; line-height: 1.6;">
+        Designed, engineered, and created by <strong>Alexander</strong> (<a href="https://github.com/alexhack235-code" target="_blank" style="color: #38bdf8; text-decoration: underline;">@alexhack235-code</a>). Aligned with Linux Professional Institute (LPI) LPIC-1 Version 5.0 (Exams 101-500 & 102-500) and bare-metal systems architecture.
+      </p>
+      <div style="display: flex; justify-content: center; gap: 1.5rem; font-size: 0.85rem; color: var(--text-muted); flex-wrap: wrap;">
+        <span><i class="fa-brands fa-github text-cyan"></i> <a href="https://github.com/alexhack235-code/LTSP" target="_blank" style="color: inherit; text-decoration: underline;">alexhack235-code/LTSP</a></span>
+        <span><i class="fa-solid fa-shield text-emerald"></i> Security Guard Protected</span>
+        <span><i class="fa-solid fa-robot" style="color: #a855f7;"></i> Gemini 2.5 AI Powered</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/advanced_data.js"></script>
+  <script src="js/advanced_app.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/ai_assistant.js"></script>
+
+  <script>
+    function switchRefTab(tab) {
+      const paneAsm = document.getElementById("pane-asm");
+      const paneC = document.getElementById("pane-c");
+      const btnAsm = document.getElementById("btn-tab-asm");
+      const btnC = document.getElementById("btn-tab-c");
+
+      if (tab === 'asm') {
+        paneAsm.style.display = 'block';
+        paneC.style.display = 'none';
+        btnAsm.classList.add('active');
+        btnC.classList.remove('active');
+      } else {
+        paneAsm.style.display = 'none';
+        paneC.style.display = 'block';
+        btnAsm.classList.remove('active');
+        btnC.classList.add('active');
+      }
+    }
+  </script>
+</body>
+</html>

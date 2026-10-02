@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linux Terminal Sandbox | LTSP Training</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Top Header with Hamburger -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <button class="btn-hamburger" id="btn-hamburger" aria-label="Open Navigation Menu">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="brand-logo" onclick="location.href='index.html'">
+          <div class="brand-icon"><i class="fa-brands fa-linux"></i></div>
+          <div class="brand-text">
+            <h1>LTSP • Terminal</h1>
+            <div class="brand-tagline">Interactive Shell Simulator</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <div class="streak-navbar-badge" id="nav-streak-pill">
+          <i class="fa-solid fa-fire text-warning"></i> <span>1 Day Streak</span>
+        </div>
+        <div class="streak-navbar-badge" id="nav-premium-badge" style="background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.25);">
+          <i class="fa-solid fa-lock text-muted"></i> <span>Premium: Locked</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header & Breadcrumbs -->
+  <section class="page-header-banner">
+    <div class="container">
+      <div class="breadcrumb-trail">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+        <span>/</span>
+        <span style="color: #fff;">Interactive Linux Terminal</span>
+      </div>
+      <h2 style="font-size: 2.2rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem;">
+        Interactive Linux Terminal Sandbox
+      </h2>
+      <p style="color: var(--text-secondary); max-width: 800px; font-size: 0.95rem;">
+        Practice real Linux commands, file permissions, and directory navigation with zero risk. Works completely offline right inside your browser!
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content Container -->
+  <main class="container" style="padding-bottom: 5rem;">
+    <div id="terminal-container"></div>
+
+    <!-- Quick Command Launcher Pallet -->
+    <div style="margin-top: 2rem; background: var(--bg-card); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+      <h4 style="font-size: 0.9rem; font-weight: 700; text-transform: uppercase; color: var(--accent-cyan); margin-bottom: 1rem;">
+        <i class="fa-solid fa-bolt"></i> Quick Command Launcher (Click to Run):
+      </h4>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.6rem;">
+        <button class="fhs-node-btn" onclick="runSimulatedCommand('who created this')" style="border-color: rgba(14,165,233,0.5); color: #38bdf8;"><i class="fa-solid fa-crown text-warning"></i> who created this</button>
+        <button class="fhs-node-btn" onclick="runSimulatedCommand('neofetch')">neofetch</button>
+        <button class="fhs-node-btn" onclick="runSimulatedCommand('git status')">git status</button>
+        <button class="fhs-node-btn" onclick="runSimulatedCommand('ls -lah')">ls -lah</button>
+        <button class="fhs-node-btn" onclick="runSimulatedCommand('cat /etc/passwd')">cat /etc/passwd</button>
+        <button class="fhs-node-btn" onclick="runSimulatedCommand('cat /etc/os-release')">cat /etc/os-release</button>
+        <button class="fhs-node-btn" onclick="runSimulatedCommand('uname -a')">uname -a</button>
+        <button class="fhs-node-btn" onclick="runSimulatedCommand('free -h')">free -h</button>
+        <button class="fhs-node-btn" onclick="runSimulatedCommand('ps aux')">ps aux</button>
+        <button class="fhs-node-btn" onclick="runSimulatedCommand('top')">top</button>
+        <button class="fhs-node-btn" onclick="runSimulatedCommand('df -hT')">df -hT</button>
+        <button class="fhs-node-btn" onclick="runSimulatedCommand('chmod 700 script.sh')">chmod 700 script.sh</button>
+        <button class="fhs-node-btn" onclick="runSimulatedCommand('stat script.sh')">stat script.sh</button>
+        <button class="fhs-node-btn" onclick="runSimulatedCommand('ip addr')">ip addr</button>
+        <button class="fhs-node-btn" onclick="runSimulatedCommand('ss -tulpn')">ss -tulpn</button>
+        <button class="fhs-node-btn" onclick="runSimulatedCommand('systemctl status ssh')">systemctl status ssh</button>
+        <button class="fhs-node-btn" onclick="runSimulatedCommand('echo $?')">echo $?</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- App Footer -->
+  <footer style="margin-top: 5rem; border-top: 1px solid var(--border-subtle); padding: 3rem 0; background: var(--bg-secondary); text-align: center;">
+    <div class="container">
+      <div style="font-weight: 700; color: #fff; font-size: 1.15rem; margin-bottom: 0.5rem;">
+        LPIC-1 Linux & Operating Systems Master Training Programme (LTSP)
+      </div>
+      <p style="font-size: 0.88rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 1.5rem; line-height: 1.6;">
+        Designed, engineered, and created by <strong>Alexander</strong> (<a href="https://github.com/alexhack235-code" target="_blank" style="color: #38bdf8; text-decoration: underline;">@alexhack235-code</a>). Aligned with Linux Professional Institute (LPI) LPIC-1 Version 5.0 (Exams 101-500 & 102-500) and bare-metal systems architecture.
+      </p>
+      <div style="display: flex; justify-content: center; gap: 1.5rem; font-size: 0.85rem; color: var(--text-muted); flex-wrap: wrap;">
+        <span><i class="fa-brands fa-github text-cyan"></i> <a href="https://github.com/alexhack235-code/LTSP" target="_blank" style="color: inherit; text-decoration: underline;">alexhack235-code/LTSP</a></span>
+        <span><i class="fa-solid fa-shield text-emerald"></i> Security Guard Protected</span>
+        <span><i class="fa-solid fa-robot" style="color: #a855f7;"></i> Gemini 2.5 AI Powered</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/terminal.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/ai_assistant.js"></script>
+
+  <script>
+    function runSimulatedCommand(cmd) {
+      if (window.terminalInstance) {
+        window.terminalInstance.appendOutput(window.terminalInstance.getPrompt() + cmd, "user-input");
+        window.terminalInstance.execute(cmd);
+        window.terminalInstance.scrollToBottom();
+      }
+    }
+  </script>
+</body>
+</html>
