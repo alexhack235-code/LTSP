@@ -1,0 +1,50 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    },
+    {
+      "source": "/(css|js|assets)/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    { "source": "/curriculum", "destination": "/curriculum.html" },
+    { "source": "/terminal", "destination": "/terminal.html" },
+    { "source": "/tools", "destination": "/tools.html" },
+    { "source": "/language_builder", "destination": "/language_builder.html" },
+    { "source": "/compiler", "destination": "/language_builder.html" },
+    { "source": "/os_builder", "destination": "/os_builder.html" },
+    { "source": "/os", "destination": "/os_builder.html" },
+    { "source": "/reference", "destination": "/reference.html" },
+    { "source": "/practice", "destination": "/practice.html" },
+    { "source": "/compendium", "destination": "/compendium.html" },
+    { "source": "/premium", "destination": "/premium.html" }
+  ]
+}

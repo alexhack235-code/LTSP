@@ -2,6 +2,7 @@
 
 [![Author](https://img.shields.io/badge/Author-Alexander%20(@alexhack235--code)-0ea5e9.svg)](https://github.com/alexhack235-code)
 [![GitHub Repository](https://img.shields.io/badge/Repository-alexhack235--code%2FLTSP-10b981.svg)](https://github.com/alexhack235-code/LTSP)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Falexhack235-code%2FLTSP)
 [![LPIC-1](https://img.shields.io/badge/Certification-LPIC--1%20(101--500%20%26%20102--500)-f59e0b.svg)](https://www.lpi.org)
 [![Security Guard](https://img.shields.io/badge/Security%20Guard-v4.2%20Active-6366f1.svg)](#-security-guard-api--premium-high-system)
 [![AI Mentor](https://img.shields.io/badge/AI%20Mentor-Google%20Gemini%202.5-ec4899.svg)](#-google-gemini-ai-sysadmin-mentor)
@@ -168,6 +169,35 @@ To ensure an uncluttered, focused learning experience, LTSP is organized into de
 * **Embedded AI Drawer**: Floating FAB button accessible across all pages.
 * **Creator-Aware Systems Mentor**: Guided to support Alexander's curriculum, answer questions on Linux, C, Assembly, and OS architecture, and provide beginner-friendly code examples.
 
+## ⚡ Instant Vercel Deployment
+
+Deploy your own live instance of LTSP to the cloud in under 30 seconds with zero backend dependencies:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Falexhack235-code%2FLTSP)
+
+### Option A: 1-Click Cloud Deployment (Recommended)
+1. Click the **Deploy with Vercel** button above.
+2. Sign in to your [Vercel](https://vercel.com) account (using your GitHub account).
+3. Connect the repository [`alexhack235-code/LTSP`](https://github.com/alexhack235-code/LTSP) and click **Deploy**.
+4. Vercel automatically detects `vercel.json` and publishes your live site to an edge-accelerated `.vercel.app` domain!
+
+### Option B: Deploy via Vercel CLI
+```bash
+# Install Vercel CLI
+npm install -g vercel
+
+# Deploy from project directory
+vercel
+
+# Deploy straight to production
+vercel --prod
+```
+
+### ⚙️ Vercel Architecture Features (`vercel.json`):
+* **Clean URLs**: Clean extensionless paths (e.g. `/curriculum`, `/terminal`, `/os`, `/compiler`, `/reference`, `/practice`, `/compendium`, `/premium`).
+* **Global Edge CDN**: Static scripts, CSS stylesheets, and assets cached with `max-age=31536000, immutable`.
+* **Security Headers**: Standard `X-Content-Type-Options: nosniff`, `X-Frame-Options: SAMEORIGIN`, and `X-XSS-Protection`.
+
 ---
 
 ## 🚀 How to Run Locally
@@ -198,6 +228,7 @@ LTSP/
 ├── practice.html           # 17-Point Checklist, 12-Question Quiz & 6 Trouble Labs
 ├── compendium.html         # 120+ Searchable Commands Table
 ├── premium.html            # Security Guard Protected Architect Tier
+├── vercel.json             # Vercel deployment configuration & routing
 ├── README.md               # Project documentation & guides
 ├── start_server.bat        # Windows 1-click server launcher
 ├── start_server.py         # Python HTTP server script
