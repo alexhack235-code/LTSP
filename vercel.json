@@ -35,6 +35,11 @@
     }
   ],
   "rewrites": [
+    { "source": "/programmes", "destination": "/programmes.html" },
+    { "source": "/programs", "destination": "/programmes.html" },
+    { "source": "/exams", "destination": "/exams.html" },
+    { "source": "/exam_centres", "destination": "/exams.html" },
+    { "source": "/exam-centres", "destination": "/exams.html" },
     { "source": "/curriculum", "destination": "/curriculum.html" },
     { "source": "/terminal", "destination": "/terminal.html" },
     { "source": "/tools", "destination": "/tools.html" },

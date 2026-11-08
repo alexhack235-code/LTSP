@@ -104,12 +104,18 @@
       </div>
 
       <!-- Fast Action CTA Buttons -->
-      <div class="hero-actions-row">
-        <a href="curriculum.html" class="btn-primary">
-          <i class="fa-solid fa-play"></i> Start Curriculum (16 Modules)
+      <div class="hero-actions-row" style="flex-wrap: wrap;">
+        <a href="programmes.html" class="btn-primary" style="background: linear-gradient(135deg, #0ea5e9, #2563eb);">
+          <i class="fa-solid fa-layer-group"></i> 8 Training Programmes
+        </a>
+        <a href="exams.html" class="btn-primary" style="background: linear-gradient(135deg, #10b981, #059669);">
+          <i class="fa-solid fa-building-shield"></i> Exam Centres & Simulator
+        </a>
+        <a href="curriculum.html" class="btn-secondary">
+          <i class="fa-solid fa-graduation-cap"></i> 16 Modules Curriculum
         </a>
         <a href="terminal.html" class="btn-secondary">
-          <i class="fa-solid fa-terminal"></i> Open Terminal Sandbox
+          <i class="fa-solid fa-terminal"></i> Terminal Sandbox
         </a>
         <a href="https://github.com/alexhack235-code/LTSP" target="_blank" class="btn-secondary" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.2);">
           <i class="fa-brands fa-github"></i> Star on GitHub
@@ -128,20 +134,56 @@
           <i class="fa-solid fa-compass" style="color: var(--accent-cyan);"></i> Learning Tracks & System Modules
         </h3>
         <p style="color: var(--text-secondary); font-size: 0.95rem;">
-          Select any dedicated learning portal below to start training. Cleanly organized into separate workspaces with no clutter.
+          Select any dedicated learning portal below to start training. Cleanly organized into separate workspaces with zero clutter.
         </p>
       </div>
     </div>
 
-    <!-- Category 1: Core Linux Administration & LPIC-1 -->
+    <!-- Category 1: Core Linux Administration & Certification Hub -->
     <div style="margin-bottom: 2.5rem;">
       <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
         <span class="badge-tag" style="background: rgba(14, 165, 233, 0.15); color: #38bdf8; border-color: rgba(14, 165, 233, 0.3);">Track 1</span>
-        <h4 style="font-size: 1.15rem; color: #fff; font-weight: 700;">Core Linux Administration & LPIC-1 Certification</h4>
+        <h4 style="font-size: 1.15rem; color: #fff; font-weight: 700;">Core Linux Administration, Programmes & Certification</h4>
       </div>
 
       <div class="tools-grid">
-        <!-- Card 1: 16 Modules Curriculum -->
+        <!-- Card: Training Programmes Hub -->
+        <div class="tool-card" style="display: flex; flex-direction: column; justify-content: space-between; border-color: rgba(14, 165, 233, 0.35); background: linear-gradient(180deg, rgba(14, 165, 233, 0.05), var(--bg-card));">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <div class="tool-card-title" style="color: #38bdf8; margin-bottom: 0;">
+                <i class="fa-solid fa-layer-group text-cyan"></i> 8 Training Programmes
+              </div>
+              <span class="badge-tag" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: none; font-size: 0.72rem;">All Disciplines</span>
+            </div>
+            <p class="tool-card-desc">
+              Specialized curricula across LPIC-1/LPIC-2 Systems Administration, Bare-Metal OS Development, Compiler Construction, Cloud DevOps & Hardened Defensive Security.
+            </p>
+          </div>
+          <a href="programmes.html" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 1rem; background: linear-gradient(135deg, #0ea5e9, #2563eb);">
+            Explore Programmes <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Card: Exam Centres & Simulator -->
+        <div class="tool-card" style="display: flex; flex-direction: column; justify-content: space-between; border-color: rgba(16, 185, 129, 0.35); background: linear-gradient(180deg, rgba(16, 185, 129, 0.05), var(--bg-card));">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <div class="tool-card-title" style="color: #10b981; margin-bottom: 0;">
+                <i class="fa-solid fa-building-shield text-emerald"></i> Exam Centres & Simulator
+              </div>
+              <span class="badge-tag" style="background: rgba(16, 185, 129, 0.15); color: #10b981; border: none; font-size: 0.72rem;">Pearson VUE / LPI</span>
+            </div>
+            <p class="tool-card-desc">
+              Timed proctored exam engine with live command-line questions, domain diagnostics, and verified printable completion certificates. Plus global accredited test center directory.
+            </p>
+          </div>
+          <a href="exams.html" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 1rem; background: linear-gradient(135deg, #10b981, #059669);">
+            Open Exam Hub <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Card: 16 Modules Curriculum -->
         <div class="tool-card" style="display: flex; flex-direction: column; justify-content: space-between;">
           <div>
             <div class="tool-card-title">
@@ -156,7 +198,7 @@
           </a>
         </div>
 
-        <!-- Card 2: Interactive Terminal -->
+        <!-- Card: Interactive Terminal -->
         <div class="tool-card" style="display: flex; flex-direction: column; justify-content: space-between;">
           <div>
             <div class="tool-card-title">
@@ -171,7 +213,7 @@
           </a>
         </div>
 
-        <!-- Card 3: Visual Tools -->
+        <!-- Card: Visual Tools -->
         <div class="tool-card" style="display: flex; flex-direction: column; justify-content: space-between;">
           <div>
             <div class="tool-card-title">

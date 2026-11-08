@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0d14">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Global Exam Centres & Certification Simulator | LTSP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Top Header with Hamburger -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <button class="btn-hamburger" id="btn-hamburger" aria-label="Open Navigation Menu">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="brand-logo" onclick="location.href='index.html'">
+          <div class="brand-icon"><i class="fa-brands fa-linux"></i></div>
+          <div class="brand-text">
+            <h1>LTSP • Exam Testing Hub</h1>
+            <div class="brand-tagline">Simulation Engine & Authorized Centres</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <div class="streak-navbar-badge" id="nav-streak-pill">
+          <i class="fa-solid fa-fire text-warning"></i> <span>1 Day Streak</span>
+        </div>
+        <div class="streak-navbar-badge" id="nav-premium-badge" style="background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.25);">
+          <i class="fa-solid fa-lock text-muted"></i> <span>Premium: Locked</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header & Breadcrumbs -->
+  <section class="page-header-banner">
+    <div class="container">
+      <div class="breadcrumb-trail">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+        <span>/</span>
+        <span style="color: #fff;">Exam Centres & Simulator</span>
+      </div>
+
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-top: 0.5rem;">
+        <div>
+          <h2 style="font-size: 2.2rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem;">
+            Official Certification Simulator & Global Exam Centres
+          </h2>
+          <p style="color: var(--text-secondary); max-width: 820px; font-size: 0.95rem; line-height: 1.6;">
+            Practice in a realistic, timed Pearson VUE simulation environment with live performance command-line questions, domain-by-domain diagnostic score reports, and verified printable certificates of completion. Locate authorized test centers worldwide.
+          </p>
+        </div>
+      </div>
+
+      <!-- Main Navigation Tabs -->
+      <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem; flex-wrap: wrap;">
+        <button class="nav-tab-btn active" id="tab-btn-simulator" onclick="switchExamsTab('simulator')">
+          <i class="fa-solid fa-clock-rotate-left text-cyan"></i> Proctored Exam Simulator
+        </button>
+        <button class="nav-tab-btn" id="tab-btn-centres" onclick="switchExamsTab('centres')">
+          <i class="fa-solid fa-map-location-dot text-emerald"></i> Global Exam Centres Locator
+        </button>
+        <button class="nav-tab-btn" id="tab-btn-rules" onclick="switchExamsTab('rules')">
+          <i class="fa-solid fa-clipboard-check text-warning"></i> Candidate Testing Protocols
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Main Content Container -->
+  <main class="container" style="padding-bottom: 5rem;">
+
+    <!-- =================================================================== -->
+    <!-- TAB PANE 1: EXAM SIMULATOR -->
+    <!-- =================================================================== -->
+    <div id="pane-simulator" style="display: block;">
+
+      <!-- Pre-Start Configuration Card -->
+      <div id="exam-pre-start-card" class="exam-setup-card">
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem;">
+          <div class="brand-icon" style="background: rgba(14, 165, 233, 0.15); color: #38bdf8;">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <div>
+            <h3 style="color: #fff; font-size: 1.35rem; font-weight: 800;">
+              Certification Exam Simulator
+            </h3>
+            <p style="color: var(--text-secondary); font-size: 0.9rem;">
+              Simulate the real testing experience before sitting for your official test.
+            </p>
+          </div>
+        </div>
+
+        <div class="exam-setup-form-grid">
+          <div>
+            <label class="form-label">Candidate Name (For Official Certificate):</label>
+            <input 
+              type="text" 
+              id="candidate-name-input" 
+              class="guard-input-field" 
+              placeholder="e.g. Alexander Hack" 
+              value="Alexander Candidate" 
+            />
+          </div>
+
+          <div>
+            <label class="form-label">Select Certification Examination Track:</label>
+            <select id="exam-select-picker" class="compendium-select">
+              <option value="lpic1-101">LPIC-1 Exam 101-500: System Architecture & GNU/Unix Commands</option>
+              <option value="lpic1-102">LPIC-1 Exam 102-500: Shells, Scripting, Interfaces, Admin & Security</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Selected Exam Info Banner -->
+        <div class="selected-exam-info-box">
+          <div style="font-weight: 700; color: #fff; font-size: 1.1rem; margin-bottom: 0.25rem;" id="selected-exam-title">
+            LPIC-1 Exam 101-500: System Architecture & GNU/Unix Commands
+          </div>
+          <div style="font-size: 0.88rem; color: #38bdf8;" id="selected-exam-meta">
+            15 Questions • 90 Minutes • Passing Score: 500/800 • Performance-Based Commands Included
+          </div>
+          <div class="exam-rules-list">
+            <div><i class="fa-solid fa-check text-emerald"></i> Countdown timer begins immediately upon clicking Start.</div>
+            <div><i class="fa-solid fa-check text-emerald"></i> You may flag questions to return and review them prior to submission.</div>
+            <div><i class="fa-solid fa-check text-emerald"></i> Instant domain performance diagnosis and official printable certificate upon passing.</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.5rem; text-align: right;">
+          <button class="btn-primary" onclick="ExamSystem.startExam()" style="padding: 0.9rem 2rem; font-size: 1rem; background: linear-gradient(135deg, #10b981, #059669);">
+            <i class="fa-solid fa-play"></i> Begin Proctored Simulation
+          </button>
+        </div>
+      </div>
+
+      <!-- Active Exam Simulator Interface (Initially Hidden) -->
+      <div id="exam-active-panel" class="exam-active-panel hidden">
+        <!-- Top Proctored Exam Bar -->
+        <div class="exam-timer-bar">
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <div class="exam-live-indicator">
+              <span class="pulse-dot"></span> LIVE SIMULATION
+            </div>
+            <div id="exam-timer-display" class="exam-timer-pill">
+              <i class="fa-solid fa-clock"></i> 90:00
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 0.5rem;">
+            <button class="btn-secondary" onclick="ExamSystem.openReviewScreen()" style="padding: 0.5rem 0.9rem; font-size: 0.85rem;">
+              <i class="fa-solid fa-list-check"></i> Review Screen
+            </button>
+            <button class="btn-primary" onclick="ExamSystem.openReviewScreen()" style="padding: 0.5rem 1rem; font-size: 0.85rem; background: #e11d48;">
+              <i class="fa-solid fa-flag-checkered"></i> Finish Exam
+            </button>
+          </div>
+        </div>
+
+        <!-- Question Navigator Ribbon -->
+        <div class="exam-q-nav-ribbon">
+          <div style="font-size: 0.8rem; font-weight: 700; color: #94a3b8; margin-right: 0.5rem;">
+            Questions:
+          </div>
+          <div class="exam-q-nav-pills" id="exam-q-nav-pills">
+            <!-- Pills rendered by js/exams_engine.js -->
+          </div>
+        </div>
+
+        <!-- Main Question Container -->
+        <div class="exam-question-body" id="exam-question-body">
+          <!-- Rendered dynamically -->
+        </div>
+
+        <!-- Bottom Action Controls -->
+        <div class="exam-bottom-actions">
+          <button class="btn-secondary" id="btn-exam-prev" onclick="ExamSystem.prevQuestion()">
+            <i class="fa-solid fa-arrow-left"></i> Previous
+          </button>
+          <div style="display: flex; gap: 0.75rem;">
+            <button class="btn-secondary" onclick="ExamSystem.openReviewScreen()">
+              <i class="fa-solid fa-eye"></i> Summary
+            </button>
+            <button class="btn-primary" id="btn-exam-next" onclick="ExamSystem.nextQuestion()">
+              Next <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Exam Results & Diagnostic Report Card (Initially Hidden) -->
+      <div id="exam-results-card" class="hidden">
+        <!-- Rendered dynamically by js/exams_engine.js -->
+      </div>
+
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- TAB PANE 2: GLOBAL EXAM CENTRES LOCATOR -->
+    <!-- =================================================================== -->
+    <div id="pane-centres" style="display: none;">
+      
+      <div class="section-header-row" style="margin-bottom: 1.5rem;">
+        <div>
+          <h2 class="section-title">
+            <i class="fa-solid fa-building-shield text-cyan"></i> Authorized Test Centres & Online Delivery
+          </h2>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">
+            Search accredited Pearson VUE and LPI physical testing locations or book home/office online proctoring through OnVUE.
+          </p>
+        </div>
+        <a href="https://home.pearsonvue.com/lpi" target="_blank" class="btn-primary" style="background: linear-gradient(135deg, #0284c7, #2563eb);">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Pearson VUE Official Portal
+        </a>
+      </div>
+
+      <!-- Filter Controls & Search -->
+      <div class="centres-filters-bar">
+        <div class="region-tabs-group">
+          <button class="region-tab-btn active" data-region="all">
+            All Regions
+          </button>
+          <button class="region-tab-btn" data-region="online">
+            <i class="fa-solid fa-laptop-code text-cyan"></i> Worldwide Remote (OnVUE)
+          </button>
+          <button class="region-tab-btn" data-region="north-america">
+            North America
+          </button>
+          <button class="region-tab-btn" data-region="europe">
+            Europe
+          </button>
+          <button class="region-tab-btn" data-region="africa">
+            Africa
+          </button>
+          <button class="region-tab-btn" data-region="asia-pacific">
+            Asia-Pacific
+          </button>
+          <button class="region-tab-btn" data-region="latin-america">
+            Latin America
+          </button>
+        </div>
+
+        <div class="search-field-wrapper" style="margin-top: 1rem;">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input 
+            type="text" 
+            id="centres-search-input" 
+            class="programmes-search-field" 
+            placeholder="Search by city, country, or center name (e.g. Lagos, London, Tokyo, Berlin, New York)..." 
+          />
+        </div>
+      </div>
+
+      <!-- Count Badge -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin: 1.25rem 0;">
+        <span class="badge-tag" id="centres-count-display" style="background: rgba(16, 185, 129, 0.12); color: #10b981; border-color: rgba(16, 185, 129, 0.3);">
+          Loading test centers...
+        </span>
+        <span style="font-size: 0.85rem; color: var(--text-muted);">
+          Updated regularly with official Pearson VUE & LPI schedules.
+        </span>
+      </div>
+
+      <!-- Grid of Test Centres -->
+      <div class="centres-cards-grid" id="centres-cards-grid">
+        <!-- Injected dynamically by js/exams_engine.js -->
+      </div>
+
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- TAB PANE 3: CANDIDATE TESTING PROTOCOLS & RULES -->
+    <!-- =================================================================== -->
+    <div id="pane-rules" style="display: none;">
+      
+      <div class="section-header-row">
+        <div>
+          <h2 class="section-title">
+            <i class="fa-solid fa-shield-halved text-warning"></i> Candidate Testing Protocols & Exam Day Readiness
+          </h2>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">
+            Essential requirements, identification rules, and procedural checklists for physical test centers and online OnVUE proctoring.
+          </p>
+        </div>
+      </div>
+
+      <div class="protocols-grid">
+        <!-- Protocol 1: ID Requirements -->
+        <div class="protocol-card">
+          <div class="protocol-icon text-cyan"><i class="fa-solid fa-id-card"></i></div>
+          <h3 class="protocol-title">1. Identification Requirements</h3>
+          <p class="protocol-desc">
+            You must bring <strong>two valid forms of ID</strong>:
+          </p>
+          <ul class="protocol-list">
+            <li><strong>Primary ID:</strong> Government-issued, original, unexpired with candidate's full legal name, recognizable photograph, and signature (Passport, Driver's License, National ID Card).</li>
+            <li><strong>Secondary ID:</strong> Must contain candidate's printed name and matching signature (Credit card, Debit card, Employee ID).</li>
+            <li>Both names must match the exact spelling on your Pearson VUE / LPI account profile.</li>
+          </ul>
+        </div>
+
+        <!-- Protocol 2: Arrival & Lockers -->
+        <div class="protocol-card">
+          <div class="protocol-icon text-emerald"><i class="fa-solid fa-door-open"></i></div>
+          <h3 class="protocol-title">2. In-Person Test Center Protocol</h3>
+          <p class="protocol-desc">
+            Procedures at accredited Pearson VUE testing centers:
+          </p>
+          <ul class="protocol-list">
+            <li>Arrive <strong>30 minutes early</strong> before your scheduled appointment time for identity verification and biometric scanning.</li>
+            <li>All personal belongings (phones, smartwatches, bags, wallets, keys, jackets) must be stored in secure lockers provided by the facility.</li>
+            <li>You will be provided with an erasable notepad whiteboard and marker for rough calculations.</li>
+          </ul>
+        </div>
+
+        <!-- Protocol 3: OnVUE Online Proctoring -->
+        <div class="protocol-card">
+          <div class="protocol-icon text-purple"><i class="fa-solid fa-laptop"></i></div>
+          <h3 class="protocol-title">3. OnVUE Online Remote Proctoring</h3>
+          <p class="protocol-desc">
+            If taking the exam from your home or private office:
+          </p>
+          <ul class="protocol-list">
+            <li>Run the official <strong>System Test</strong> prior to exam day to ensure webcam, microphone, and internet speed (>3 Mbps) meet standards.</li>
+            <li>Your testing desk must be completely clear of all papers, books, extra monitors, writing utensils, and phones.</li>
+            <li>The test room must be completely private with no other individuals entering or speaking during the 90-minute testing session.</li>
+          </ul>
+        </div>
+
+        <!-- Protocol 4: Scoring & Retake Policy -->
+        <div class="protocol-card">
+          <div class="protocol-icon text-warning"><i class="fa-solid fa-rotate-left"></i></div>
+          <h3 class="protocol-title">4. Retake Policy & Official Scoring</h3>
+          <p class="protocol-desc">
+            Rules governing scores, certifications, and retakes:
+          </p>
+          <ul class="protocol-list">
+            <li>LPIC-1 passing mark is <strong>500 out of 800</strong> (scaled score based on question weighting).</li>
+            <li>If you do not pass on your first attempt, you must wait <strong>7 days</strong> before retaking.</li>
+            <li>For any subsequent attempts, a <strong>30-day waiting period</strong> applies.</li>
+            <li>Once passed, LPIC-1 credentials remain active and verifiable for <strong>5 years</strong>.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Review Modal (Before Submit) -->
+  <div id="exam-review-modal" class="exam-review-modal"></div>
+
+  <!-- App Footer with Alexander Attribution -->
+  <footer style="margin-top: 5rem; border-top: 1px solid var(--border-subtle); padding: 3rem 0; background: var(--bg-secondary); text-align: center;">
+    <div class="container">
+      <div style="font-weight: 700; color: #fff; font-size: 1.15rem; margin-bottom: 0.5rem;">
+        LPIC-1 Linux & Operating Systems Master Training Programme (LTSP)
+      </div>
+      <p style="font-size: 0.88rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 1.5rem; line-height: 1.6;">
+        Designed, engineered, and created by <strong>Alexander</strong> (<a href="https://github.com/alexhack235-code" target="_blank" style="color: #38bdf8; text-decoration: underline;">@alexhack235-code</a>). Aligned with Linux Professional Institute (LPI) LPIC-1 Version 5.0 (Exams 101-500 & 102-500) and bare-metal systems architecture.
+      </p>
+      <div style="display: flex; justify-content: center; gap: 1.5rem; font-size: 0.85rem; color: var(--text-muted); flex-wrap: wrap;">
+        <span><i class="fa-brands fa-github text-cyan"></i> <a href="https://github.com/alexhack235-code/LTSP" target="_blank" style="color: inherit; text-decoration: underline;">alexhack235-code/LTSP</a></span>
+        <span><i class="fa-solid fa-shield text-emerald"></i> Security Guard Protected</span>
+        <span><i class="fa-solid fa-fire text-warning"></i> 45-Day Streak System</span>
+        <span><i class="fa-solid fa-robot" style="color: #a855f7;"></i> Gemini 2.5 AI Powered</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- JavaScript Modules -->
+  <script src="js/exams_data.js"></script>
+  <script src="js/exams_engine.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/ai_assistant.js"></script>
+
+  <script>
+    function switchExamsTab(tabName) {
+      document.getElementById('pane-simulator').style.display = (tabName === 'simulator') ? 'block' : 'none';
+      document.getElementById('pane-centres').style.display = (tabName === 'centres') ? 'block' : 'none';
+      document.getElementById('pane-rules').style.display = (tabName === 'rules') ? 'block' : 'none';
+
+      document.getElementById('tab-btn-simulator').classList.toggle('active', tabName === 'simulator');
+      document.getElementById('tab-btn-centres').classList.toggle('active', tabName === 'centres');
+      document.getElementById('tab-btn-rules').classList.toggle('active', tabName === 'rules');
+    }
+  </script>
+</body>
+</html>

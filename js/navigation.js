@@ -59,12 +59,18 @@ const NavigationSystem = {
 
         <nav class="drawer-nav">
           <div class="drawer-nav-section">
-            <div class="drawer-section-title">Core Training</div>
+            <div class="drawer-section-title">Core Training & Certification</div>
             <a href="index.html" class="drawer-nav-item ${this.currentPage === 'index' ? 'active' : ''}">
               <i class="fa-solid fa-house"></i> <span>Dashboard & Hub</span>
             </a>
+            <a href="programmes.html" class="drawer-nav-item ${this.currentPage === 'programmes' ? 'active' : ''}">
+              <i class="fa-solid fa-layer-group text-cyan"></i> <span>Training Programmes Hub</span>
+            </a>
             <a href="curriculum.html" class="drawer-nav-item ${this.currentPage === 'curriculum' ? 'active' : ''}">
               <i class="fa-solid fa-graduation-cap"></i> <span>16 Modules Curriculum</span>
+            </a>
+            <a href="exams.html" class="drawer-nav-item ${this.currentPage === 'exams' ? 'active' : ''}">
+              <i class="fa-solid fa-building-shield text-emerald"></i> <span>Exam Centres & Simulator</span>
             </a>
             <a href="terminal.html" class="drawer-nav-item ${this.currentPage === 'terminal' ? 'active' : ''}">
               <i class="fa-solid fa-terminal"></i> <span>Interactive Linux Terminal</span>

@@ -32,8 +32,10 @@ flowchart TD
     User(["Learner / Systems Engineer"]) --> Hub["index.html (Command Center Dashboard)"]
     Hub --> NavDrawer["Universal Hamburger Drawer (navigation.js)"]
     
-    subgraph Track1["Track 1: Core Linux Administration & LPIC-1"]
+    subgraph Track1["Track 1: Core Linux Administration & Certification"]
+        Programmes["programmes.html (8 Training Programmes Hub)"]
         Curriculum["curriculum.html (16 Modules)"]
+        Exams["exams.html (Exam Simulator & Worldwide Centres)"]
         Terminal["terminal.html (Bash Shell Sandbox)"]
         Tools["tools.html (chmod / FHS / Redirection)"]
         Compendium["compendium.html (120+ Commands)"]
@@ -135,7 +137,9 @@ To ensure an uncluttered, focused learning experience, LTSP is organized into de
 | Page | URL | Purpose & Capabilities |
 | :--- | :--- | :--- |
 | **Dashboard** | [`index.html`](index.html) | Central command hub, 45-day challenge, learning pledge & launchpads |
+| **Training Programmes Hub** | [`programmes.html`](programmes.html) | 8 specialized engineering tracks (LPIC-1/2, OS, Compiler, Cloud DevOps, Security) |
 | **Curriculum** | [`curriculum.html`](curriculum.html) | 16 comprehensive LPIC-1 modules with copyable syntax & analogies |
+| **Exam Centres & Simulator** | [`exams.html`](exams.html) | Timed proctored testing engine + worldwide accredited Pearson VUE directory |
 | **Terminal** | [`terminal.html`](terminal.html) | Interactive in-browser bash terminal sandbox with quick launcher |
 | **Visual Tools** | [`tools.html`](tools.html) | Octal `chmod` calculator, FHS tree, I/O redirection flow & signals matrix |
 | **Language Builder** | [`language_builder.html`](language_builder.html) | 5-phase compiler roadmap + live in-browser compiler playground |
@@ -144,6 +148,34 @@ To ensure an uncluttered, focused learning experience, LTSP is organized into de
 | **Practice & Labs** | [`practice.html`](practice.html) | Tabbed 17-point checklist, 12-question quiz & 6 sysadmin missions |
 | **Compendium** | [`compendium.html`](compendium.html) | Searchable dictionary of 120+ commands with 1-click clipboard copy |
 | **Premium High System** | [`premium.html`](premium.html) | Security Guard API IP-as-password gate & kernel/compiler source bundles |
+
+---
+
+## 🎓 8 Specialized Training Programmes & Academy Tracks
+LTSP features 8 fully structured, career-aligned training curricula accessible via [`programmes.html`](programmes.html):
+1. **LPIC-1: Certified Linux Administrator**: 16 modules covering GNU utilities, storage, network configuration, and systemd.
+2. **LPIC-2: Certified Linux Engineer**: Advanced administration covering custom kernel compilation, mdadm RAID, LVM2, BIND9 DNS, Nginx reverse proxies, and PAM authentication.
+3. **Bare-Metal Operating System Development**: 6-stage roadmap building a 64-bit multitasking kernel with GDT, PML4 paging, IDT interrupts, and VGA memory `0xB8000`.
+4. **Programming Language & Compiler Construction**: 5-phase compiler pipeline from Lexer and Pratt/Recursive Descent AST to System V AMD64 register allocation and native x86-64 NASM code generation.
+5. **Cloud Native DevOps & Linux Infrastructure**: Process isolation via Linux Namespaces (PID, NET, MNT, IPC, UTS, USER), cgroups v2 resource quotas, container runtimes (`runc`, `containerd`), and Kubernetes architecture.
+6. **Hardened Linux Systems & Defensive Security**: Mandatory Access Control (SELinux & AppArmor), Linux Audit Framework (`auditd`), sysctl kernel hardening, nftables firewalls, and CIS Benchmark compliance.
+7. **Embedded Linux & IoT Systems Architecture**: Cross-compilation toolchains, U-Boot bootloader, Device Tree Sources (`.dts`), Buildroot and Yocto Project embedded distribution builds.
+8. **Low-Level Systems Programming in Modern C & Assembly**: Modern C23, virtual memory internals (`brk`, `sbrk`, `mmap`), custom heap allocators, POSIX syscalls (`fork`, `execve`, `epoll`), and multi-threading with `pthreads`.
+
+---
+
+## 🏛️ Global Exam Centres & Certification Simulation Engine
+Accessible via [`exams.html`](exams.html), this module bridges theoretical learning with real-world certification testing:
+* **Timed Proctored Exam Simulator**:
+  - Exact simulation of Pearson VUE testing environments with countdown timer, question navigator, and flag for review.
+  - **Performance-Based Command Line Questions**: Type real bash commands and system flags validated by the parser.
+  - **Diagnostic Score Report**: Scaled score out of 800 (500 pass mark) with objective domain breakdown charts.
+  - **Personalized Verified Certificate of Excellence**: High-resolution, printable diploma featuring Candidate Name, Score, Verification ID, and official signature by **Alexander** (Lead Systems Architect).
+* **Worldwide Accredited Test Centres Directory**:
+  - Interactive locator covering accredited Pearson VUE & LPI test centres in **North America, Europe, Africa, Asia-Pacific, and Latin America**.
+  - Detailed profiles with physical address, operating hours, direct phone/email, facilities (lockers, quiet booths, dual displays), and direct booking links.
+  - Comprehensive guide to **Pearson VUE OnVUE Online Remote Proctoring** from home or office.
+  - Candidate test-day rules, ID validation standards, and retake waiting period policies.
 
 ---
 
